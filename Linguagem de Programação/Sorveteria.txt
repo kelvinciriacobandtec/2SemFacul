@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Sorveteria {
+    public static void main(String [] args){
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("*** Sorveteria ***\n\n Qual sorvete tu queres\n 1 - Casquinha \n 2 - Sundae \n 3 - Milkshake \n");
+        Integer produto = in.nextInt();
+        
+        switch(produto){
+            case 1:
+                System.out.println("casquinha custa R$ 2,00");
+                break;
+                
+               case 2:
+                System.out.println("sundae custa R$ 5,00");
+                break;
+                
+                case 3:
+                System.out.println("milkshake custa R$ 7,00");
+                break;
+		
+		default:
+		System.out.println("Errado");
+        }
+            
+    }
+}
