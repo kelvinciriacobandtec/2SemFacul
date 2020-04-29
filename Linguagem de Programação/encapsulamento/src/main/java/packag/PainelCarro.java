@@ -10,6 +10,8 @@ package packag;
  * @author Aluno
  */
 public class PainelCarro extends javax.swing.JFrame {
+    
+        Concessionaria carro01 = new Concessionaria();
 
     /**
      * Creates new form PainelCarro
@@ -39,12 +41,32 @@ public class PainelCarro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnLigar.setText("Ligar");
+        btnLigar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigarActionPerformed(evt);
+            }
+        });
 
         btnAcelerar.setText("Acelerar");
+        btnAcelerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcelerarActionPerformed(evt);
+            }
+        });
 
         btnFreiar.setText("Freiar");
+        btnFreiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFreiarActionPerformed(evt);
+            }
+        });
 
         btnDesliga.setText("Desligar");
+        btnDesliga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesligaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Status do Carro");
 
@@ -101,6 +123,45 @@ public class PainelCarro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLigarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigarActionPerformed
+        // TODO add your handling code here:
+         if (false == carro01.ligado) {
+                carro01.CarroLigado();
+        }
+        
+        lblStatus.setText("Ligado");
+    }//GEN-LAST:event_btnLigarActionPerformed
+
+    private void btnDesligaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesligaActionPerformed
+        // TODO add your handling code here:
+             if (true == carro01.ligado) {
+                carro01.CarroDesligado();
+                carro01.acelerar = 0.0;
+        }
+        
+        lblStatus.setText("Desligado");
+        lblVelocidade.setText(String.format("0,00 Km/h", carro01.acelerar));
+        
+    }//GEN-LAST:event_btnDesligaActionPerformed
+
+    private void btnAcelerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcelerarActionPerformed
+        // TODO add your handling code here:
+        if (carro01.ligado == true && carro01.acelerar < 120) {
+                carro01.Acelerar();
+            
+                lblVelocidade.setText(String.format("%.2f Km/h ",carro01.acelerar));
+        }
+    }//GEN-LAST:event_btnAcelerarActionPerformed
+
+    private void btnFreiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFreiarActionPerformed
+        // TODO add your handling code here:
+          if (carro01.ligado == true && carro01.acelerar > 0) {
+                carro01.freiar();
+            
+                lblVelocidade.setText(String.format("%.2f Km/h ",carro01.acelerar));
+        }
+    }//GEN-LAST:event_btnFreiarActionPerformed
 
     /**
      * @param args the command line arguments
